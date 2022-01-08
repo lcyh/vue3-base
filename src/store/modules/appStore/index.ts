@@ -121,7 +121,6 @@ const appModule = {
     },
     SET_MENU_LIST (state: AppState, value: MenuData[]) {
       state.menuList = value
-      console.log('state.menuList', state.menuList)
     },
     SET_MENU_MAP (state: AppState, value: Map<string, []>) {
       state.menuMap = value
@@ -215,7 +214,6 @@ const appModule = {
           })
       })
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setRemoveToken ({ commit, state }: ActionContext<AppState, RootStateTypes>) {
       removeCookie()
       commit('SET_USER_INFO', '')

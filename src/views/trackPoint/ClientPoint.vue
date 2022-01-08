@@ -8,6 +8,9 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'clientPoint'
+  name: 'clientPoint',
+  setup () {
+    return {}
+  }
 })
 </script>

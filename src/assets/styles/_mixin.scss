@@ -1,0 +1,19 @@
+@import './variable.scss';
+
+// 标题前面的标记
+@mixin h1-label($color) {
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 18px;
+    width: 3px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+    margin-right: 8px;
+    @if $color {
+      background-color: $color;
+    } @else {
+      background-color: $border-label;
+    }
+  }
+}

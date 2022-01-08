@@ -1,12 +1,10 @@
 import { createStore } from 'vuex'
+import RootStateTypes from './types'
+import appModule from './modules/appStore'
 
-export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+const store = createStore<RootStateTypes>({
   modules: {
+    appModule
   }
 })
+export default store

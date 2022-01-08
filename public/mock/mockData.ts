@@ -1,0 +1,53 @@
+/*
+ * @Author: changluo
+ * @Description:mock 数据
+ */
+export const permissionMenuList = [
+  {
+    menuId: 1,
+    componentName: 'Application',
+    menuName: '应用列表',
+    type: 1,
+    parentId: '',
+    order: '',
+    children: [
+      {
+        menuId: 101,
+        componentName: 'ApplicationList',
+        menuName: '应用列表',
+        type: 2,
+        parentId: '',
+        order: '',
+        children: []
+      }
+    ]
+  },
+  {
+    menuId: 2,
+    componentName: 'TrackPointPlan',
+    menuName: '埋点方案',
+    type: 1,
+    parentId: '',
+    order: '',
+    children: [
+      {
+        menuId: 103,
+        componentName: 'ClientPoint',
+        menuName: '客户端埋点',
+        type: 2,
+        parentId: '',
+        order: '',
+        children: []
+      },
+      {
+        menuId: 104,
+        componentName: 'ServerPoint',
+        menuName: '服务端埋点',
+        type: 2,
+        parentId: '',
+        order: '',
+        children: []
+      }
+    ]
+  }
+]

@@ -1,7 +1,9 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    es6: true, // 支持并启用es6语法
+    node: true, // 支持node语法及变量
+    browser: true, // 支持浏览器全局变量
   },
   extends: ['plugin:vue/vue3-essential', '@vue/standard', '@vue/typescript/recommended'],
   parserOptions: {

@@ -140,7 +140,6 @@ export default defineComponent({
               .catch((err) => {
                 console.warn(err)
               })
-            // Just to simulate the time of the request
             setTimeout(() => {
               state.loading = false
             }, 0.5 * 1000)

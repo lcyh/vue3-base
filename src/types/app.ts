@@ -16,7 +16,6 @@ export interface AppState {
   userInfo: UserInfo;
   collapsed: boolean;
   showNavSide: boolean | undefined;
-  showGameSelect: boolean;
   menuMap: Map<string, []>;
   menuList: MenuData[];
   activedMenu: string;
@@ -24,9 +23,6 @@ export interface AppState {
   addRouters: MenuState[];
   hasAddRoute: boolean;
   permissionMenuList: PermissionItemMenuProp[];
-  permission: {
-    dynamicRoutes: any[]
-  };
   browserInfo:{
     browser:string;
     browserVersion:string;

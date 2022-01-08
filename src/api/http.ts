@@ -45,8 +45,16 @@ instance.interceptors.response.use(
   (response: AxiosResponse) => {
     if (response.status >= 200 && response.status < 300) {
       const { code } = response.data
-      if (code === 200 || code === 1 || code === 0) {
+      // 兼容返回的是二进制文件
+      if (response.config.responseType === 'blob') {
         return response
+      }
+      if (code === 200 || code === 0) {
+        return response
+      }
+      if (code === -101) {
+        // 用户未登录
+        router.replace('/login')
       }
       if (code === 403) {
         // 用户无权限
@@ -56,7 +64,13 @@ instance.interceptors.response.use(
     }
     return Promise.reject(response)
   },
-  (error: any) => Promise.reject(error)
+  (error: any) => {
+    // 判断请求异常信息中是否含有超时timeout/Network字符串
+    if (error.message.includes('timeout') || error.message.includes('Network')) {
+      return Promise.reject(error)
+    }
+    return Promise.reject(error)
+  }
 )
 
 export default class Http {

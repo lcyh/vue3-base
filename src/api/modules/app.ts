@@ -4,7 +4,8 @@ import Http from '../http'
 function loginRequest (params = {}): Promise<any> {
   return Http.create({
     method: 'get',
-    url: '/mock/login.json',
+    url: '/login',
+    // url: '/mock/login.json',
     params
   })
 }
@@ -12,7 +13,8 @@ function loginRequest (params = {}): Promise<any> {
 function getUserInfo (params = {}): Promise<any> {
   return Http.create({
     method: 'get',
-    url: '/mock/user.json',
+    url: '/user/info',
+    // url: '/mock/user.json',
     params
   })
 }
@@ -20,7 +22,8 @@ function getUserInfo (params = {}): Promise<any> {
 function getUserPermission (params = {}): Promise<any> {
   return Http.create({
     method: 'get',
-    url: '/mock/permission.json',
+    url: '/menu/list',
+    // url: '/mock/permission.json',
     data: params
   })
 }

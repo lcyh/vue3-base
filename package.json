@@ -6,6 +6,7 @@
     "new:comp": "node ./scripts/generateComponent",
     "new:view": "node ./scripts/generateView",
     "serve": "vue-cli-service serve",
+    "stage": "vue-cli-service serve --mode stage",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",

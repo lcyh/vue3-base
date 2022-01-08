@@ -5,7 +5,7 @@
 export default [
   {
     key: '2',
-    path: '/trackPointPlan',
+    path: '/track-plan',
     name: 'TrackPointPlan',
     meta: {
       requiresAuth: true,
@@ -16,7 +16,7 @@ export default [
     component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),
     children: [
       {
-        path: 'clientPoint',
+        path: 'client',
         name: 'ClientPoint',
         props: true,
         meta: {
@@ -26,7 +26,7 @@ export default [
         component: () => import(/* webpackChunkName: "ClientPoint" */ '@/views/trackPoint/ClientPoint.vue')
       },
       {
-        path: 'serverPoint',
+        path: 'server',
         name: 'ServerPoint',
         props: true,
         meta: {

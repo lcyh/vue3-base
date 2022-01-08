@@ -20,10 +20,14 @@ import NavSide from './NavSide.vue'
 export default defineComponent({
   name: 'layout',
   components: { Header, NavSide },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // beforeRouteEnter(to, from, next) {},
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // beforeRouteUpdate(to, from, next) {},
+  // beforeRouteEnter (to, from, next) {
+  //   console.log('beforeRouteEnter')
+  //   next()
+  // },
+  // beforeRouteUpdate (to, from, next) {
+  //   console.log('beforeRouteUpdate')
+  //   next()
+  // },
   setup () {
     // return {};
   }

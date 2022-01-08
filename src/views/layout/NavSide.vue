@@ -6,7 +6,7 @@
         background-color="#fff"
         text-color="#101010"
         active-text-color="#437BEE"
-        :default-active="defaultActivedMenu"
+        :default-active="selectedMenu"
         :collapse-transition="false"
         :collapse="collapsed"
         @select="handleClickMenuItem"
@@ -66,22 +66,25 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useStore } from 'vuex'
-import { defineComponent, computed, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { defineComponent, computed, ref, reactive } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
 export default defineComponent({
-  beforeRouteEnter (to, from, next) {
-    console.log('to, from,', { to, from })
-    next()
-  },
   setup () {
     const store = useStore()
     const router = useRouter()
     const collapsed = ref(false)
+    const reactiveData: any = reactive({
+      route: useRoute()
+    })
     const menuList = computed(() => store.state.appModule.menuList)
     const defaultActivedMenu = computed(() => {
       const firstChlid = menuList.value[0]?.children[0]?.componentName
       return firstChlid || '/'
+    })
+    const selectedMenu = computed(() => {
+      const { route } = reactiveData
+      return route.name || defaultActivedMenu
     })
     const toggleCollapse = () => {
       collapsed.value = !collapsed.value
@@ -90,7 +93,7 @@ export default defineComponent({
       router.push({ name })
     }
     return {
-      defaultActivedMenu,
+      selectedMenu,
       collapsed,
       toggleCollapse,
       menuList,

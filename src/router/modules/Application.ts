@@ -9,7 +9,8 @@ export default [
     name: 'Application',
     meta: {
       requiresAuth: true,
-      title: '应用列表'
+      title: '应用列表',
+      icon: 'iconlinechart'
     },
     redirect: { name: 'ApplicationList' },
     component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),

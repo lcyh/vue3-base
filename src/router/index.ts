@@ -56,13 +56,12 @@ router.beforeEach(async (to: RouteLocationNormalized, _: RouteLocationNormalized
   }
 })
 // 全局路由后置守卫
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 router.afterEach((to) => {
-  console.log('afterEach-to', to)
   // 显示还是隐藏左侧导航
   // store.dispatch('setNavSide', to.meta.showNavSide)
   done()
 })
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function resetRouter () {
   const newRouter = router;
   (router as any).matcher = (newRouter as any).matcher // reset router

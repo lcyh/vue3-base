@@ -121,6 +121,7 @@ const appModule = {
     },
     SET_MENU_LIST (state: AppState, value: MenuData[]) {
       state.menuList = value
+      console.log('state.menuList', state.menuList)
     },
     SET_MENU_MAP (state: AppState, value: Map<string, []>) {
       state.menuMap = value
@@ -199,6 +200,8 @@ const appModule = {
             if (res.data) {
               const { data } = res
               const resData = formatMenu(data)
+              console.log('resData', resData)
+
               commit('SET_MENU_LIST', resData.menu)
               commit('SET_MENU_MAP', resData.map)
               commit('SET_ADD_ROUTERS', resData.routes)

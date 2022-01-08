@@ -2,12 +2,10 @@
   <div class="container-fulled">
     <Header />
     <section class="content">
-      <!-- <NavSide /> -->
+      <NavSide />
       <main class="main">
         <router-view v-slot="{ Component }">
-          <transition name="slide">
-            <component :is="Component" />
-          </transition>
+          <component :is="Component" />
         </router-view>
       </main>
     </section>
@@ -32,14 +30,6 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.2s ease;
-}
-.slide-enter,
-.slide-leave-to {
-  opacity: 0;
-}
 .container-fulled {
   display: flex;
   flex-direction: column;

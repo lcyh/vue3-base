@@ -1,55 +1,63 @@
 <template>
-  <aside class="aside-wrapper" v-show="showNavSide">
+  <aside class="aside-wrapper">
     <div :class="{ 'nav-aside': true, collapse: collapsed }">
       <el-menu
         class="menu-vertical"
         background-color="#fff"
         text-color="#101010"
         active-text-color="#437BEE"
-        :default-active="defaultActivedSubmenu"
+        :default-active="defaultActivedMenu"
         :collapse-transition="false"
         :collapse="collapsed"
         @select="handleClickMenuItem"
       >
-        <template v-for="item in submenuList">
+        <template v-for="item in menuList">
           <el-sub-menu
             class="sub-menu"
             v-if="item.children && item.children.length > 0"
-            :index="item.id + ''"
-            :key="item.id"
+            :index="item.componentName"
+            :key="item.menuId"
           >
             <template #title>
               <i
                 :class="[
                   'iconfont',
                   'sub-menu-icon',
-                  menuIcons[item.title] ? menuIcons[item.title] : item.icon
+                  item.meta.icon,
                 ]"
               >
               </i>
-              <span class="sub-title">{{ item.title }}</span>
+              <span class="sub-title">{{ item.menuName }}</span>
             </template>
-            <el-menu-item-group>
-              <el-menu-item
-                v-for="el in item.children"
-                :key="el.id"
-                :index="el.id + ''"
-                class="menu-item"
-              >
-                <i :class="['iconfont', el.icon]"></i>
-                <template #title>{{ el.title }}</template>
-              </el-menu-item>
-            </el-menu-item-group>
+            <el-menu-item
+              v-for="el in item.children"
+              :index="el.componentName"
+              :key="el.menuId"
+              class="menu-item"
+            >
+              <i :class="['iconfont', el.icon]"></i>
+              <template #title>{{ el.menuName }}</template>
+            </el-menu-item>
           </el-sub-menu>
-          <el-menu-item class="menu-item" v-else :key="item.id" :index="item.id + ''">
+          <el-menu-item
+            class="menu-item"
+            v-else
+            :index="item.componentName"
+            :key="item.menuId"
+          >
             <i :class="['iconfont', item.icon]"></i>
-            <template class="nav-text" #title>{{ item.title }}</template>
+            <template class="nav-text" #title>{{ item.menuName }}</template>
           </el-menu-item>
         </template>
       </el-menu>
       <div class="nav-foot">
         <div @click="toggleCollapse">
-          <i :class="['iconfont', collapsed ? 'iconicon_expand' : 'iconicon_collapse']"></i>
+          <i
+            :class="[
+              'iconfont',
+              collapsed ? 'iconicon_expand' : 'iconicon_collapse',
+            ]"
+          ></i>
         </div>
       </div>
     </div>
@@ -59,44 +67,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useStore } from 'vuex'
 import { defineComponent, computed, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-
-const menuIcons: { [key: string]: string } = {
-  运营: 'iconlinechart',
-  研发: 'iconpiechart',
-  流量: 'iconadduser',
-  专题: 'iconspecial'
-}
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
-  setup() {
+  beforeRouteEnter (to, from, next) {
+    console.log('to, from,', { to, from })
+    next()
+  },
+  setup () {
     const store = useStore()
-    const route = useRoute()
     const router = useRouter()
     const collapsed = ref(false)
-    const submenuList = computed(() => store.state.databoardModule.reportMenuList)
-    const showNavSide = computed(() => route.name === 'DataboardDetail')
-    const defaultActivedSubmenu = computed(() => {
-      const { params } = route
-      let firstId = submenuList.value[0]?.id
-      if (params?.id) {
-        firstId = params.id
-      }
-      return `${firstId}`
+    const menuList = computed(() => store.state.appModule.menuList)
+    const defaultActivedMenu = computed(() => {
+      const firstChlid = menuList.value[0]?.children[0]?.componentName
+      return firstChlid || '/'
     })
     const toggleCollapse = () => {
       collapsed.value = !collapsed.value
     }
-    const handleClickMenuItem = (menuId: any) => {
-      router.push(`/databoard/detail/${menuId}`)
+    const handleClickMenuItem = (name: string) => {
+      router.push({ name })
     }
     return {
-      defaultActivedSubmenu,
+      defaultActivedMenu,
       collapsed,
       toggleCollapse,
-      menuIcons,
-      submenuList,
-      showNavSide,
+      menuList,
       handleClickMenuItem
     }
   }

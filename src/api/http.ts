@@ -3,9 +3,6 @@ import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import { getCookie } from '@/utils/auth'
 import router from '@/router'
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-console.log('process.env.VUE_APP_API_BASE_URL', process.env.VUE_APP_API_BASE_URL)
-
 // 返回数据格式
 export interface ResponseData<T> {
   code: number
@@ -15,7 +12,7 @@ export interface ResponseData<T> {
 
 // 创建axios实例
 const instance = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API_BASE_URL : '',
+  baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 10000,
   withCredentials: true
 })
@@ -51,9 +48,6 @@ instance.interceptors.response.use(
       if (code === 200 || code === 1 || code === 0) {
         return response
       }
-      // if (code === 0) {
-      //   router.replace('/login')
-      // }
       if (code === 403) {
         // 用户无权限
         router.replace('/403')

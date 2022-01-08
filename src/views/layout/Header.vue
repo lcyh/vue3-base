@@ -89,27 +89,14 @@ export default defineComponent({
       color: $fc-light;
     }
   }
-  .header-menus {
-    float: left;
-    ::v-deep(.el-menu--horizontal) {
-      border-bottom: none;
-      .el-menu-item {
-        font-size: 16px;
-        height: 60px;
-        line-height: 60px;
-        font-weight: bold;
-        &.is-active {
-          border-bottom-width: 3px;
-        }
-      }
-    }
-  }
   .header-right {
     float: right;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     padding: 10px 15px;
     width: 200px;
+    height: 100%;
     .dropdown-wrap {
       color: $fc-light;
       cursor: pointer;

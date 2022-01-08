@@ -3,7 +3,9 @@
  */
 /* eslint-disable */
 import { MenuState } from '@/types/router'
-function importModules (files: any) {
+import Layout from '@/views/layout/index.vue'
+
+function importModules(files: any) {
   const routeModules: MenuState[] = []
   files.keys().forEach((key: string) => {
     // console.log(files(key).default)

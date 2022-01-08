@@ -2,7 +2,7 @@
   <div class="container-fulled">
     <Header />
     <section class="content">
-      <NavSide />
+      <!-- <NavSide /> -->
       <main class="main">
         <router-view v-slot="{ Component }">
           <transition name="slide">
@@ -26,7 +26,7 @@ export default defineComponent({
   // beforeRouteEnter(to, from, next) {},
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // beforeRouteUpdate(to, from, next) {},
-  setup() {
+  setup () {
     // return {};
   }
 })

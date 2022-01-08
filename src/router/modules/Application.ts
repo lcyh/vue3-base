@@ -15,7 +15,7 @@ export default [
     component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),
     children: [
       {
-        path: 'application/ApplicationList',
+        path: 'applicationList',
         name: 'ApplicationList',
         props: true,
         meta: {

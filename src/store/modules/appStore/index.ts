@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionContext } from 'vuex'
 import { ElMessage } from 'element-plus'
@@ -12,7 +12,6 @@ import { MenuState } from '@/types/router'
 import { MenuData, AppState } from '@/types/app'
 import { UserInfo } from '@/types/user'
 
-// import { permissionMenuList } from './mockData'
 // 获取导航对应的路由对象
 function getRouteObj (record: any, routeList: any[] = routeModules) {
   const recursion = (list: MenuState[]): (null|MenuState) => {
@@ -84,14 +83,6 @@ function formatMenu (menuLiist: any[]) {
   return { menu, map, routes }
 }
 
-function handleRouteMap () {
-  const map: any = {}
-  routeModules.forEach((item: any) => {
-    map[item.name] = item
-  })
-  return map
-}
-
 const appModule = {
   namespaced: true,
   state: {
@@ -105,7 +96,6 @@ const appModule = {
     }, // 用户信息
     collapsed: false, // 左侧导航是否折叠
     showNavSide: true, // 是否显示左侧导航
-    showGameSelect: false, // 是否显示游戏下拉框
     menuMap: new Map(), // 一二级导航集合
     menuList: [], // 一级导航数组
     activedMenu: 'Application', // 当前选中的一级导航
@@ -123,9 +113,6 @@ const appModule = {
     SET_NAV_SIDE (state: AppState, value: boolean | undefined) {
       state.showNavSide = value
     },
-    SET_SHOW_GAME_SELECT (state: AppState, value: boolean) {
-      state.showGameSelect = value
-    },
     SET_ACTIVED_MENU (state: AppState, value: string) {
       state.activedMenu = value
     },
@@ -141,12 +128,12 @@ const appModule = {
     // 添加动态路由
     SET_ADD_ROUTERS: (state: AppState, routers: any[]) => {
       const firstMenuUrl = routers[0]?.path
-      routers.unshift({
+      routers.push({
         path: '/',
         component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),
         redirect: firstMenuUrl || '/'
       }, {
-        path: '*',
+        path: '/:pathMath(.*)',
         redirect: '/'
       })
       state.addRouters = routers
@@ -160,14 +147,10 @@ const appModule = {
     setNavSide ({ commit }: ActionContext<AppState, RootStateTypes>, value: boolean) {
       commit('SET_NAV_SIDE', value)
     },
-    setShowGameSelect ({ commit }: ActionContext<AppState, RootStateTypes>, value: boolean) {
-      commit('SET_SHOW_GAME_SELECT', value)
-    },
     async setLogin (
       { commit }: ActionContext<AppState, RootStateTypes>,
       userInfo: { username: string, password: string }
     ) {
-      // eslint-disable-next-line prefer-const
       let { username, password } = userInfo
       username = username.trim()
       await UserAction.loginRequest({ username, password }).then((res: any) => {
@@ -178,7 +161,7 @@ const appModule = {
         console.log('err', err)
       })
     },
-    setLogout ({ commit }: ActionContext<AppState, RootStateTypes>) {
+    setLogout () {
       removeCookie()
       resetRouter()
     },

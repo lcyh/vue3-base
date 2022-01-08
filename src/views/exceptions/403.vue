@@ -30,7 +30,7 @@ export default defineComponent({
 .container {
   height: 100%;
   .wrapper {
-    text-align: center;
+       text-align: center;
     padding-top: 10%;
     margin: 0 auto;
     .error {

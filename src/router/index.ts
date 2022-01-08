@@ -37,9 +37,9 @@ router.beforeEach(async (to: RouteLocationNormalized, _: RouteLocationNormalized
           // Generate accessible routes map based on role
           await store.dispatch('appModule/setUserPermission', { role, id })
           // Dynamically add accessible routes
-          // console.log('store.state.appModule.permission.dynamicRoutes-2', store.state.appModule.permission.dynamicRoutes);
+          // console.log('store.state.appModule.addRouters', store.state.appModule.addRouters);
 
-          store.state.appModule.permission.dynamicRoutes.forEach((route) => {
+          store.state.appModule.addRouters.forEach((route:RouteRecordRaw) => {
             router.addRoute(route)
           })
           // Hack: ensure addRoutes is complete

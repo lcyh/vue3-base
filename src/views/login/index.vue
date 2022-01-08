@@ -4,10 +4,6 @@
 -->
 <template>
   <div class="login-container">
-    <video poster="../../assets/images/video-cover.jpeg" loop autoplay muted>
-      <source src="../../assets/images/night.mp4" />
-    </video>
-
     <el-form
       ref="loginFormRef"
       :model="loginForm"
@@ -55,31 +51,28 @@
       >
         登录
       </el-button>
-      <div style="position: relative">
-        <div class="tips">
-          <span>用户名 : admin </span>
-          <span>密码 : 随便填 </span>
-        </div>
-        <div class="tips">
-          <span>用户名 : editor </span>
-          <span>密码 : 随便填 </span>
-        </div>
-        <el-button class="thirdparty-button" type="primary"> 第三方登录 </el-button>
-      </div>
     </el-form>
   </div>
 </template>
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { defineComponent, onMounted, reactive, watch, ref, nextTick, toRefs } from 'vue'
+import {
+  defineComponent,
+  onMounted,
+  reactive,
+  watch,
+  ref,
+  nextTick,
+  toRefs
+} from 'vue'
 import { useRoute, LocationQuery, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { isValidUsername } from '@/utils/shared'
 
 export default defineComponent({
   components: {},
-  setup() {
+  setup () {
     const userNameRef = ref(null)
     const passwordRef = ref(null)
     const loginFormRef = ref(null)
@@ -102,14 +95,22 @@ export default defineComponent({
     })
 
     const methods = reactive({
-      validateUsername: (rule: any, value: string, callback: (p?: any) => void) => {
+      validateUsername: (
+        rule: any,
+        value: string,
+        callback: (p?: any) => void
+      ) => {
         if (!isValidUsername(value)) {
           callback(new Error('Please enter the correct user name'))
         } else {
           callback()
         }
       },
-      validatePassword: (rule: any, value: string, callback: (p?: any) => void) => {
+      validatePassword: (
+        rule: any,
+        value: string,
+        callback: (p?: any) => void
+      ) => {
         if (value.length < 6) {
           callback(new Error('The password can not be less than 6 digits'))
         } else {
@@ -123,11 +124,11 @@ export default defineComponent({
           state.passwordType = 'password'
         }
         nextTick(() => {
-          ;(passwordRef.value as any).focus()
+          (passwordRef.value as any).focus()
         })
       },
       handleLogin: () => {
-        ;(loginFormRef.value as any).validate(async (valid: boolean) => {
+        (loginFormRef.value as any).validate(async (valid: boolean) => {
           if (valid) {
             state.loading = true
             await store.dispatch('appModule/setLogin', state.loginForm)
@@ -150,7 +151,7 @@ export default defineComponent({
       }
     })
 
-    function getOtherQuery(query: LocationQuery) {
+    function getOtherQuery (query: LocationQuery) {
       return Object.keys(query).reduce((acc, cur) => {
         if (cur !== 'redirect') {
           acc[cur] = query[cur]
@@ -172,9 +173,9 @@ export default defineComponent({
 
     onMounted(() => {
       if (state.loginForm.username === '') {
-        ;(userNameRef.value as any).focus()
+        (userNameRef.value as any).focus()
       } else if (state.loginForm.password === '') {
-        ;(passwordRef.value as any).focus()
+        (passwordRef.value as any).focus()
       }
     })
 
@@ -241,19 +242,7 @@ export default defineComponent({
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  // background-color: $loginBg;
-  video {
-    position: absolute;
-    /* Vertical and Horizontal center*/
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
+  background-color: $loginBg;
   .login-form {
     position: relative;
     width: 520px;
@@ -262,19 +251,6 @@ export default defineComponent({
     margin: 0 auto;
     overflow: hidden;
   }
-
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-
-    span {
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
-  }
-
   .svg-container {
     padding: 6px 5px 6px 15px;
     color: $darkGray;
@@ -282,10 +258,8 @@ export default defineComponent({
     width: 30px;
     display: inline-block;
   }
-
   .title-container {
     position: relative;
-
     .title {
       font-size: 26px;
       color: $lightGray;
@@ -293,7 +267,6 @@ export default defineComponent({
       text-align: center;
       font-weight: bold;
     }
-
     .set-language {
       color: #fff;
       position: absolute;
@@ -303,7 +276,6 @@ export default defineComponent({
       cursor: pointer;
     }
   }
-
   .show-pwd {
     position: absolute;
     right: 10px;
@@ -312,18 +284,6 @@ export default defineComponent({
     color: $darkGray;
     cursor: pointer;
     user-select: none;
-  }
-
-  .thirdparty-button {
-    position: absolute;
-    right: 0;
-    bottom: 6px;
-  }
-
-  @media only screen and (max-width: 470px) {
-    .thirdparty-button {
-      display: none;
-    }
   }
 }
 </style>

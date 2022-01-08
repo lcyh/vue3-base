@@ -18,9 +18,14 @@ export const routeModules = importModules(require.context('./modules', false, /\
 // 静态路由
 export default [
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */'@/views/login/index.vue')
+  },
+  {
     path: '/403',
-    name: 'Forbiddance',
-    component: () => import(/* webpackChunkName: "forbiddance" */ '@/views/exceptions/403.vue')
+    name: 'notAuth',
+    component: () => import(/* webpackChunkName: "notAuth" */ '@/views/exceptions/403.vue')
   },
   {
     path: '/404',

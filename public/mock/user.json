@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "message": null,
+  "data": {
+    "id": 22,
+    "userName": "dev11",
+    "remark": "dev11",
+    "roleName": null,
+    "gamePermission": "",
+    "email": "1111@qq.com",
+    "operator": "ll",
+    "token": "cc",
+    "ctime": "2020-09-30T02:07:18.000+0000",
+    "mtime": "2020-09-30T02:07:18.000+0000",
+    "deleted": 0,
+    "role": ["研发"],
+    "urlList": [
+      "/setting",
+      "/player",
+      "/level",
+      "/setting/permissionMng",
+      "/player/new",
+      "/level/distribute"
+    ]
+  },
+  "token": null,
+  "success": true
+}

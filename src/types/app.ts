@@ -24,6 +24,9 @@ export interface AppState {
   addRouters: MenuState[];
   hasAddRoute: boolean;
   permissionMenuList: PermissionItemMenuProp[];
+  permission: {
+    dynamicRoutes: any[]
+  };
   browserInfo:{
     browser:string;
     browserVersion:string;

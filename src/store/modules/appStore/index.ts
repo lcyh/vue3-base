@@ -6,10 +6,11 @@ import { ElMessage } from 'element-plus'
 import { routeModules } from '@/router/common'
 import { resetRouter } from '@/router/index'
 import UserAction from '@/api/modules/app'
-import AppState, { UserInfo } from './types'
 import RootStateTypes from '../../types'
 import { getCookie, setCookie, removeCookie } from '@/utils/auth'
 import { MenuState } from '@/types/router'
+import { MenuData, AppState } from '@/types/app'
+import { UserInfo } from '@/types/user'
 
 // import { permissionMenuList } from './mockData'
 // 获取导航对应的路由对象
@@ -90,27 +91,6 @@ function handleRouteMap () {
   })
   return map
 }
-function handleAddRoute (routers: any) {
-  // routeModules
-  const addRoutes: any = []
-  const routeMap = handleRouteMap()
-  if (routers.length) {
-    routers.forEach((route: any) => {
-      const hasRoute = routeMap[route.name]
-      if (hasRoute) {
-        addRoutes.push(hasRoute)
-      }
-    })
-  }
-  addRoutes.push({
-    path: '/:path(.*)',
-    redirect: '/',
-    meta: { hidden: true }
-  })
-  console.log('addRoutes', addRoutes)
-
-  return { routes: addRoutes }
-}
 
 const appModule = {
   namespaced: true,
@@ -127,10 +107,9 @@ const appModule = {
     showNavSide: true, // 是否显示左侧导航
     showGameSelect: false, // 是否显示游戏下拉框
     menuMap: new Map(), // 一二级导航集合
-    activedMenu: 'Home', // 当前选中的一级导航
-    permission: {
-      dynamicRoutes: []
-    },
+    menuList: [], // 一级导航数组
+    activedMenu: 'Application', // 当前选中的一级导航
+    addRouters: [], // 根据用户权限获取的动态路由
     hasAddRoute: false
   },
   mutations: {
@@ -153,11 +132,24 @@ const appModule = {
     SET_USER_INFO (state: AppState, value: UserInfo) {
       state.userInfo = value
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    SET_MENU_LIST (state: AppState, value: MenuData[]) {
+      state.menuList = value
+    },
+    SET_MENU_MAP (state: AppState, value: Map<string, []>) {
+      state.menuMap = value
+    },
+    // 添加动态路由
     SET_ADD_ROUTERS: (state: AppState, routers: any[]) => {
-      const { routes }: any = handleAddRoute(routers)
-      state.permission.dynamicRoutes = routes
-      console.log('state.permission.dynamicRoutes-1', state.permission.dynamicRoutes)
+      const firstMenuUrl = routers[0]?.path
+      routers.unshift({
+        path: '/',
+        component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),
+        redirect: firstMenuUrl || '/'
+      }, {
+        path: '*',
+        redirect: '/'
+      })
+      state.addRouters = routers
       state.hasAddRoute = true
     }
   },
@@ -223,17 +215,11 @@ const appModule = {
           .then((res: any) => {
             if (res.data) {
               const { data } = res
-              const { list } = data
-              // const result = {
-              //   menu: list,
-              //   map: list,
-              //   routes: list,
-              // }
-              // commit('SET_MENU_LIST', result.menu)
-              // commit('SET_MENU_MAP', result.map)
-              const { routes } = handleAddRoute(list)
-              commit('SET_ADD_ROUTERS', routes)
-              resolve(routes)
+              const resData = formatMenu(data)
+              commit('SET_MENU_LIST', resData.menu)
+              commit('SET_MENU_MAP', resData.map)
+              commit('SET_ADD_ROUTERS', resData.routes)
+              resolve(resData.routes)
             } else {
               reject(new Error('用户菜单列表获取失败'))
             }

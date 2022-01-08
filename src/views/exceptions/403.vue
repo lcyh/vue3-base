@@ -2,7 +2,7 @@
   <div class="container">
     <div class="wrapper">
       <div class="error">
-        <img class="forbid-img" src="../../assets/images/403.png" alt="" />
+        <img class="forbid-img" src="@/assets/images/403.png" alt="" />
       </div>
       <div class="forbid-box">
         <p class="forbid-tips">抱歉，你无权访问该页面</p>
@@ -16,7 +16,7 @@ import { defineComponent } from 'vue'
 import Redirect from '@/utils/redirect'
 
 export default defineComponent({
-  setup() {
+  setup () {
     const onClick = () => {
       window.location.href = Redirect.loginUrl
     }

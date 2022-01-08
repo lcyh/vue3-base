@@ -5,4 +5,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-createApp(App).use(store).use(router).use(ElementPlus, { size: 'small', zIndex: 3000 }).mount('#app')
+const app = createApp(App)
+
+app.use(store).use(router).use(ElementPlus, { size: 'small', zIndex: 3000 }).mount('#app')

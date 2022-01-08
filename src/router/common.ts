@@ -3,7 +3,6 @@
  */
 /* eslint-disable */
 import { MenuState } from '@/types/router'
-import Layout from '@/views/layout/index.vue'
 
 function importModules(files: any) {
   const routeModules: MenuState[] = []

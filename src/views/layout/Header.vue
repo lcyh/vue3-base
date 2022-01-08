@@ -9,11 +9,7 @@
     <div class="header-right">
       <el-dropdown class="dropdown-wrap" @command="handleCommand">
         <span class="el-dropdown-link">
-          <img
-            class="user-avatar"
-            src="@/assets/images/bili.png"
-            alt=""
-          />
+          <img class="user-avatar" src="@/assets/images/bili.png" alt="" />
           <span class="user-name">{{ userInfo.userName }}</span>
           <i class="el-icon-caret-bottom"></i>
         </span>

@@ -57,15 +57,7 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  defineComponent,
-  onMounted,
-  reactive,
-  watch,
-  ref,
-  nextTick,
-  toRefs
-} from 'vue'
+import { defineComponent, onMounted, reactive, watch, ref, nextTick, toRefs } from 'vue'
 import { useRoute, LocationQuery, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { isValidUsername } from '@/utils/shared'
@@ -95,22 +87,14 @@ export default defineComponent({
     })
 
     const methods = reactive({
-      validateUsername: (
-        rule: any,
-        value: string,
-        callback: (p?: any) => void
-      ) => {
+      validateUsername: (rule: any, value: string, callback: (p?: any) => void) => {
         if (!isValidUsername(value)) {
           callback(new Error('Please enter the correct user name'))
         } else {
           callback()
         }
       },
-      validatePassword: (
-        rule: any,
-        value: string,
-        callback: (p?: any) => void
-      ) => {
+      validatePassword: (rule: any, value: string, callback: (p?: any) => void) => {
         if (value.length < 6) {
           callback(new Error('The password can not be less than 6 digits'))
         } else {

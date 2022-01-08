@@ -1,7 +1,5 @@
 <template>
-  <div class="serverPoint">
-    服务端埋点
-  </div>
+  <div class="serverPoint">服务端埋点</div>
 </template>
 
 <script lang="ts">

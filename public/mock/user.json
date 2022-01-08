@@ -14,14 +14,7 @@
     "mtime": "2020-09-30T02:07:18.000+0000",
     "deleted": 0,
     "role": ["研发"],
-    "urlList": [
-      "/setting",
-      "/player",
-      "/level",
-      "/setting/permissionMng",
-      "/player/new",
-      "/level/distribute"
-    ]
+    "urlList": ["/setting", "/player", "/level", "/setting/permissionMng", "/player/new", "/level/distribute"]
   },
   "token": null,
   "success": true

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Http from '../http'
 
-function loginRequest (params = {}):Promise<any> {
+function loginRequest (params = {}): Promise<any> {
   return Http.create({
     method: 'get',
     url: '/mock/login.json',
@@ -9,7 +9,7 @@ function loginRequest (params = {}):Promise<any> {
   })
 }
 // 获取当前用户信息
-function getUserInfo (params = {}):Promise<any> {
+function getUserInfo (params = {}): Promise<any> {
   return Http.create({
     method: 'get',
     url: '/mock/user.json',
@@ -17,7 +17,7 @@ function getUserInfo (params = {}):Promise<any> {
   })
 }
 // 获取当前用户导航权限
-function getUserPermission (params = {}):Promise<any> {
+function getUserPermission (params = {}): Promise<any> {
   return Http.create({
     method: 'get',
     url: '/mock/permission.json',

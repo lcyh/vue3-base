@@ -19,32 +19,15 @@
             :key="item.menuId"
           >
             <template #title>
-              <i
-                :class="[
-                  'iconfont',
-                  'sub-menu-icon',
-                  item.meta.icon,
-                ]"
-              >
-              </i>
+              <i :class="['iconfont', 'sub-menu-icon', item.meta.icon]"> </i>
               <span class="sub-title">{{ item.menuName }}</span>
             </template>
-            <el-menu-item
-              v-for="el in item.children"
-              :index="el.componentName"
-              :key="el.menuId"
-              class="menu-item"
-            >
+            <el-menu-item v-for="el in item.children" :index="el.componentName" :key="el.menuId" class="menu-item">
               <i :class="['iconfont', el.icon]"></i>
               <template #title>{{ el.menuName }}</template>
             </el-menu-item>
           </el-sub-menu>
-          <el-menu-item
-            class="menu-item"
-            v-else
-            :index="item.componentName"
-            :key="item.menuId"
-          >
+          <el-menu-item class="menu-item" v-else :index="item.componentName" :key="item.menuId">
             <i :class="['iconfont', item.icon]"></i>
             <template class="nav-text" #title>{{ item.menuName }}</template>
           </el-menu-item>
@@ -52,12 +35,7 @@
       </el-menu>
       <div class="nav-foot">
         <div @click="toggleCollapse">
-          <i
-            :class="[
-              'iconfont',
-              collapsed ? 'iconicon_expand' : 'iconicon_collapse',
-            ]"
-          ></i>
+          <i :class="['iconfont', collapsed ? 'iconicon_expand' : 'iconicon_collapse']"></i>
         </div>
       </div>
     </div>

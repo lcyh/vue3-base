@@ -31,7 +31,7 @@ router.beforeEach(async (to: RouteLocationNormalized, _: RouteLocationNormalized
           // Generate accessible routes map based on role
           await store.dispatch('appModule/setUserPermission', { role, id })
           // Dynamically add accessible routes
-          store.state.appModule.addRouters.forEach((route:any) => {
+          store.state.appModule.addRouters.forEach((route: any) => {
             router.addRoute(route)
           })
           next({ ...to, replace: true })
@@ -63,7 +63,7 @@ router.afterEach((to) => {
   done()
 })
 export function resetRouter () {
-  const newRouter = router;
-  (router as any).matcher = (newRouter as any).matcher // reset router
+  const newRouter = router
+  ;(router as any).matcher = (newRouter as any).matcher // reset router
 }
 export default router

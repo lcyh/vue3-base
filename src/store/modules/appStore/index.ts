@@ -14,7 +14,7 @@ import { UserInfo } from '@/types/user'
 
 // 获取导航对应的路由对象
 function getRouteObj (record: any, routeList: any[] = routeModules) {
-  const recursion = (list: MenuState[]): (null|MenuState) => {
+  const recursion = (list: MenuState[]): null | MenuState => {
     for (let i = 0; i < list.length; i++) {
       const element: any = list[i]
       const routeName = element.componentName || element.name
@@ -128,14 +128,17 @@ const appModule = {
     // 添加动态路由
     SET_ADD_ROUTERS: (state: AppState, routers: any[]) => {
       const firstMenuUrl = routers[0]?.path
-      routers.push({
-        path: '/',
-        component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),
-        redirect: firstMenuUrl || '/'
-      }, {
-        path: '/:pathMath(.*)',
-        redirect: '/'
-      })
+      routers.push(
+        {
+          path: '/',
+          component: () => import(/* webpackChunkName: "index" */ '@/views/layout/index.vue'),
+          redirect: firstMenuUrl || '/'
+        },
+        {
+          path: '/:pathMath(.*)',
+          redirect: '/'
+        }
+      )
       state.addRouters = routers
       state.hasAddRoute = true
     }
@@ -149,17 +152,19 @@ const appModule = {
     },
     async setLogin (
       { commit }: ActionContext<AppState, RootStateTypes>,
-      userInfo: { username: string, password: string }
+      userInfo: { username: string; password: string }
     ) {
       let { username, password } = userInfo
       username = username.trim()
-      await UserAction.loginRequest({ username, password }).then((res: any) => {
-        if (res?.code === 200 && res.data.accessToken) {
-          setCookie(res.data.accessToken)
-        }
-      }).catch((err: any) => {
-        console.log('err', err)
-      })
+      await UserAction.loginRequest({ username, password })
+        .then((res: any) => {
+          if (res?.code === 200 && res.data.accessToken) {
+            setCookie(res.data.accessToken)
+          }
+        })
+        .catch((err: any) => {
+          console.log('err', err)
+        })
     },
     setLogout () {
       removeCookie()

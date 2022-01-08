@@ -1,7 +1,5 @@
 <template>
-  <div class="clientPoint">
-    客户端埋点
-  </div>
+  <div class="clientPoint">客户端埋点</div>
 </template>
 
 <script lang="ts">

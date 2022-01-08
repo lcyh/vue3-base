@@ -1,0 +1,15 @@
+{
+  "workbench.editor.enablePreview": true, //预览模式关闭
+  "editor.formatOnSave": true, // #每次保存的时候自动格式化
+  // 自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  // 配置 ESLint 检查的文件类型
+  "eslint.validate": ["javascript", "vue", "html"],
+  "eslint.options": {
+    //指定vscode的eslint所处理的文件的后缀
+    "extensions": [".js", ".vue", ".ts", ".tsx", ".jsx"]
+  },
+  "liveServer.settings.port": 5501
+}

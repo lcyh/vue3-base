@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface MenuMeta {
   title: string
   icon: string
@@ -9,6 +10,7 @@ export interface MenuState {
   name: string
   meta: MenuMeta
   children: MenuState[]
+  [key:string]:any
 }
 export interface MenuRouter extends MenuMeta {
   path: string

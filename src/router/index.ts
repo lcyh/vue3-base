@@ -16,14 +16,14 @@ const router = createRouter({
   routes: constantRoutes as RouteRecordRaw[]
 })
 const whiteList = ['/login', '/403', '/404']
-router.beforeEach(async (to: RouteLocationNormalized, _: RouteLocationNormalized, next: any) => {
+router.beforeEach(async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: any) => {
   start()
   if (getCookie()) {
     if (to.path === '/login') {
       next({ path: '/' })
       done()
     } else {
-      if (store.state.appModule?.userInfo?.role && store.state.appModule?.userInfo?.role?.length === 0) {
+      if (!store.state.appModule?.userInfo?.id) {
         try {
           // Note: roles must be a object array! such as: ['admin'] or ['developer', 'editor']
           await store.dispatch('appModule/setUserInfo')

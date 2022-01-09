@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@antfu/utils@^0.3.0":
+  version "0.3.0"
+  resolved "https://r2.cnpmjs.org/@antfu/utils/-/utils-0.3.0.tgz"
+  integrity sha512-UU8TLr/EoXdg7OjMp0h9oDoIAVr+Z/oW9cpOxQQyrsz6Qzd2ms/1CdWx8fl2OQdFpxGmq5Vc4TwfLHId6nAZjA==
+  dependencies:
+    "@types/throttle-debounce" "^2.1.0"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.8.3":
   version "7.16.7"
   resolved "https://registry.npmmirror.com/@babel/code-frame/download/@babel/code-frame-7.16.7.tgz"
@@ -1081,6 +1088,14 @@
   resolved "https://r.cnpmjs.org/@popperjs/core/-/core-2.11.2.tgz"
   integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
+"@rollup/pluginutils@^4.1.1", "@rollup/pluginutils@^4.1.2":
+  version "4.1.2"
+  resolved "https://r2.cnpmjs.org/@rollup/pluginutils/-/pluginutils-4.1.2.tgz"
+  integrity sha512-ROn4qvkxP9SyPeHaf7uQC/GPFY6L/OWy9+bd9AwcjOAWQwxRscoEyAUD8qCY5o5iL4jqQwoLk2kaTKJPb/HwzQ==
+  dependencies:
+    estree-walker "^2.0.1"
+    picomatch "^2.2.2"
+
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.8.1"
   resolved "https://registry.npmmirror.com/@soda/friendly-errors-webpack-plugin/download/@soda/friendly-errors-webpack-plugin-1.8.1.tgz?cache=0&sync_timestamp=1636965503646&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40soda%2Ffriendly-errors-webpack-plugin%2Fdownload%2F%40soda%2Ffriendly-errors-webpack-plugin-1.8.1.tgz"
@@ -1265,6 +1280,11 @@
   version "1.0.8"
   resolved "https://registry.npmmirror.com/@types/tapable/download/@types/tapable-1.0.8.tgz"
   integrity sha1-uUpDkchWZse3Mpn9OtedT6pDUxA=
+
+"@types/throttle-debounce@^2.1.0":
+  version "2.1.0"
+  resolved "https://r2.cnpmjs.org/@types/throttle-debounce/-/throttle-debounce-2.1.0.tgz"
+  integrity sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==
 
 "@types/uglify-js@*":
   version "3.13.1"
@@ -2906,7 +2926,7 @@ check-types@^8.0.3:
   resolved "https://registry.nlark.com/check-types/download/check-types-8.0.3.tgz"
   integrity sha1-M1bMoZyIlUTy16le1JzlCKDs9VI=
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@^3.3.0, chokidar@^3.4.1:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.3.0, chokidar@^3.4.1, chokidar@^3.5.2:
   version "3.5.2"
   resolved "https://registry.npmmirror.com/chokidar/download/chokidar-3.5.2.tgz"
   integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
@@ -3748,7 +3768,7 @@ debug@^3.1.1, debug@^3.2.6, debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.3:
+debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
   version "4.3.3"
   resolved "https://registry.npmmirror.com/debug/download/debug-4.3.3.tgz"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -4509,7 +4529,7 @@ estraverse@^5.1.0, estraverse@^5.2.0:
   resolved "https://registry.npmmirror.com/estraverse/download/estraverse-5.3.0.tgz?cache=0&sync_timestamp=1635237716974&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Festraverse%2Fdownload%2Festraverse-5.3.0.tgz"
   integrity sha1-LupSkHAvJquP5TcDcP+GyWXSESM=
 
-estree-walker@^2.0.2:
+estree-walker@^2.0.1, estree-walker@^2.0.2:
   version "2.0.2"
   resolved "https://registry.npmmirror.com/estree-walker/download/estree-walker-2.0.2.tgz"
   integrity sha1-UvAQF4wqTBF6d1fP6UKtt9LaTKw=
@@ -4737,7 +4757,7 @@ fast-glob@^2.2.6:
     merge2 "^1.2.3"
     micromatch "^3.1.10"
 
-fast-glob@^3.0.3, fast-glob@^3.1.1:
+fast-glob@^3.0.3, fast-glob@^3.1.1, fast-glob@^3.2.7:
   version "3.2.7"
   resolved "https://registry.npmmirror.com/fast-glob/download/fast-glob-3.2.7.tgz"
   integrity sha1-/Wy3otfpqnp4RhEehaGW1rL3ZqE=
@@ -6579,6 +6599,11 @@ loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
+local-pkg@^0.4.0:
+  version "0.4.1"
+  resolved "https://r.cnpmjs.org/local-pkg/-/local-pkg-0.4.1.tgz"
+  integrity sha512-lL87ytIGP2FU5PWwNDo0w3WhIo2gopIAxPg9RxDYF7m4rr5ahuZxP22xnJHIvaLTe4Z9P6uKKY2UHiwyB4pcrw==
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.nlark.com/locate-path/download/locate-path-2.0.0.tgz?cache=0&sync_timestamp=1629895724478&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flocate-path%2Fdownload%2Flocate-path-2.0.0.tgz"
@@ -7769,7 +7794,7 @@ picocolors@^1.0.0:
   resolved "https://registry.npmmirror.com/picocolors/download/picocolors-1.0.0.tgz?cache=0&sync_timestamp=1634093442271&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fpicocolors%2Fdownload%2Fpicocolors-1.0.0.tgz"
   integrity sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=
 
-picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
   version "2.3.1"
   resolved "https://registry.npmmirror.com/picomatch/download/picomatch-2.3.1.tgz"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
@@ -8199,14 +8224,9 @@ prepend-http@^1.0.0:
   resolved "https://registry.nlark.com/prepend-http/download/prepend-http-1.0.4.tgz"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-"prettier@^1.18.2 || ^2.0.0":
+"prettier@^1.18.2 || ^2.0.0", prettier@^2.5.1:
   version "2.5.1"
   resolved "https://registry.npmmirror.com/prettier/download/prettier-2.5.1.tgz"
-  integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
-
-prettier@^2.5.1:
-  version "2.5.1"
-  resolved "https://r2.cnpmjs.org/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
   integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
 
 pretty-error@^2.0.2:
@@ -9988,6 +10008,41 @@ unpipe@1.0.0, unpipe@~1.0.0:
   resolved "https://registry.nlark.com/unpipe/download/unpipe-1.0.0.tgz"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
+unplugin-auto-import@^0.5.5:
+  version "0.5.5"
+  resolved "https://r2.cnpmjs.org/unplugin-auto-import/-/unplugin-auto-import-0.5.5.tgz"
+  integrity sha512-PAP/6WdqWtGhlQBvlVZ7qmhHbLcTYSsARtFSbY/jaUx/SaQkRT7SvronHIKEvx4bPmS+l4erQ9gQKSBBPzvUnQ==
+  dependencies:
+    "@antfu/utils" "^0.3.0"
+    "@rollup/pluginutils" "^4.1.2"
+    local-pkg "^0.4.0"
+    magic-string "^0.25.7"
+    resolve "^1.20.0"
+    unplugin "^0.2.21"
+
+unplugin-vue-components@^0.17.11:
+  version "0.17.11"
+  resolved "https://r2.cnpmjs.org/unplugin-vue-components/-/unplugin-vue-components-0.17.11.tgz"
+  integrity sha512-u5MQ0TbikszRelCt6EA/HskGtGkGLDxi7tQ4/4tcEPWkH3yXSZRJCOeLF5MSdxN1SiGjaJ0I9zeHjoZFC3FvRw==
+  dependencies:
+    "@antfu/utils" "^0.3.0"
+    "@rollup/pluginutils" "^4.1.1"
+    chokidar "^3.5.2"
+    debug "^4.3.2"
+    fast-glob "^3.2.7"
+    local-pkg "^0.4.0"
+    magic-string "^0.25.7"
+    minimatch "^3.0.4"
+    resolve "^1.20.0"
+    unplugin "^0.2.21"
+
+unplugin@^0.2.21:
+  version "0.2.21"
+  resolved "https://r2.cnpmjs.org/unplugin/-/unplugin-0.2.21.tgz"
+  integrity sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ==
+  dependencies:
+    webpack-virtual-modules "^0.4.3"
+
 unquote@~1.1.1:
   version "1.1.1"
   resolved "https://registry.nlark.com/unquote/download/unquote-1.1.1.tgz"
@@ -10385,6 +10440,11 @@ webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1:
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
+
+webpack-virtual-modules@^0.4.3:
+  version "0.4.3"
+  resolved "https://r2.cnpmjs.org/webpack-virtual-modules/-/webpack-virtual-modules-0.4.3.tgz"
+  integrity sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==
 
 webpack@^4.0.0:
   version "4.46.0"
